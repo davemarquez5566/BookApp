@@ -2,7 +2,7 @@
 
 ## Description
 
-- This is a simple book app the segregates between male and female books with filters of Harbooks etc.
+- This is a simple book app the segregates between male and female books with filters of Hard books etc.
 
 ## Installation
 
