@@ -1,11 +1,13 @@
-import "./App.css";
+import React, { FC } from "react";
 import BookApp from "./components/BookApp";
-function App() {
+import "./App.css";
+
+const App: FC = () => {
   return (
     <div className="w-full">
       <BookApp />
     </div>
   );
-}
+};
 
 export default App;

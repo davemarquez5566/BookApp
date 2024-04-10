@@ -16,11 +16,21 @@ const BookApp = () => {
   const [filteredType, setFilteredType] = useState<string>("");
   const [filterSet, setFilterSet] = useState<string[]>([]);
 
+  //The useEffect hook will run once the books state variable has a value and the filteredBooks state variable is empty,
+  //it will set the filteredBooks state variable to the books state variable
+  //This is to ensure that the filteredBooks state variable will have a value once the books state variable has a value
+  //This will prevent the filteredBooks state variable to be empty
+
   useEffect(() => {
     if (filteredBooks.length === 0 && books) {
       setFilteredBooks(books);
     }
   }, [books, filteredBooks]);
+
+  //The useEffect hook will run once the filteredBooks state variable has a value
+  //It will filter the books based on gender and will store the filtered data on the maleBooks and femaleBooks state variable
+  //The filtered data will be sorted based on the book's name in ascending order
+  //maleBooks and femaleBooks are used in the BookInfoCard component to display the books
 
   useEffect(() => {
     if (filteredBooks) {
@@ -38,37 +48,40 @@ const BookApp = () => {
     }
   }, [filteredBooks]);
 
-  //create a typescript function that will filter the books base from type and will accepted a type parameter, we will store the filtered data on the filteredBooks state variable
+  //the filterBooks function will filter the books based on the type of book
   const filterBooks = (type: string) => {
     const filteredDataForBooks = books
-      .filter((person) => person.books !== null)
+      .filter((person) => person.books !== null) // add this condition since there is a null value in the books array
       .map((person) => ({
         ...person,
-        books: person.books!.filter((book) => book.type === type),
+        books: person.books?.filter((book) => book.type === type),
       }))
       .filter((person) => person.books.length > 0);
     setFilteredBooks(filteredDataForBooks);
   };
 
+  //the useEffect below is needed to filter the books based on the type of book
   useEffect(() => {
     if (books) {
       filterBooks(filteredType);
     }
   }, [books, filteredType]);
 
+  // This is used for the filter set, if we want to filter the books based on the type of book that is currently available
+  // currently we have Hardcover as the only type of book available
+
   useEffect(() => {
     if (books) {
       const filterSetData = books
         .filter((person) => person.books !== null)
-        .flatMap((person) => person.books!)
-        .map((book) => book.type)
-        .filter((value, index, self) => self.indexOf(value) === index);
-      setFilterSet(filterSetData);
+        .flatMap((person) => person.books)
+        .map((book) => book.type);
+      setFilterSet([...new Set(filterSetData)]);
     }
   }, [books]);
 
   return (
-    <>
+    <main className="border-[0.5rem] border-custom-blue pb-[2rem]">
       <HeaderTitle
         title="Owners and Books"
         className="text-5xl text-white flex items-center justify-center p-[4rem] w-full bg-custom-blue w-full"
@@ -103,7 +116,7 @@ const BookApp = () => {
           />
         </div>
       </section>
-    </>
+    </main>
   );
 };
 

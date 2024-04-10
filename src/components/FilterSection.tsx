@@ -12,14 +12,14 @@ const FilterSection: React.FC<FilterSectionProps> = ({
       {filterSet.map((filterType) => (
         <div
           key={filterType}
-          className="cursor-pointer"
+          className="order-1 sm:order-0 text-xl cursor-pointer underline text-custom-blue hover:text-blue-900 font-bold"
           onClick={() => setFilteredType(filterType)}
         >
           {filterType} only
         </div>
       ))}
       <button
-        className="bg-custom-blue px-[4rem] py-[1rem] text-white rounded-lg"
+        className="order-0 sm:order-1 text-xl bg-custom-blue px-[4rem] py-[1rem] text-white rounded-lg"
         onClick={() => setFilteredType("")}
       >
         Get Books

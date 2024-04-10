@@ -1,5 +1,5 @@
 interface LineDividerProps {
-  className?: string;
+  className?: string; // for enhancement if there are additional classes
 }
 const LineDivider = ({ className }: LineDividerProps) => {
   return (

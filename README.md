@@ -1,4 +1,4 @@
-# BOOK App by MDM
+# BOOK App Demo
 
 ## Description
 
@@ -7,15 +7,15 @@
 ## Installation
 
 - run `npm install` to install all the dependencies
-- run `npm start` to start the app
 - run `npm run build` to build the app
-- run `npm run test` to run the tests
-- run `npm run eject` to eject the app
-- run `npm run lint` to lint the app
+
+## Usage
+
+- run `npm run dev` to start the app in development mode
 
 ## running the json-server
 
 - very important to run the json-server to get the data from the db.json file
 
 * run `json-server --watch db.json --port 3001` to start the json-server
-* json-server --watch db.json
+* run `json-server --watch db.json` to start the json-server with the default port 3000
